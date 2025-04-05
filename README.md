@@ -8,6 +8,8 @@ I want to write some notes during the procedure of my cs self-studying. Basicall
 
 2025.4.1: Decided to start this repo and have not written anything but part of contents.
 
+2025.4.5: Actually started to write. I think update here is stupid. Go for the [Log](#log) for details.
+
 ## Contents
 
 ### JAVA
@@ -54,3 +56,7 @@ I learn this from the book Computer Networking: A Top-Down Approach and the [off
 ### Operating System
 
 I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/schedule.html).
+
+## Log
+
+2025.4.5: Write half of the [LinkedLists](./Data_Structures_and_Algorithms/LinkedLists.md), til the part before SLList.
