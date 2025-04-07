@@ -67,7 +67,9 @@ Recursion! What is more exciting than this? But won't it be too complicated if y
 Let's see some more examples.
 
 Method int get(int i) that returns the ith item in the list.
+
 1.For simplicity, OK to assume the item exists.
+
 2.Front item is the 0th item.
 
 ```java
@@ -80,7 +82,9 @@ Method int get(int i) that returns the ith item in the list.
 ```
 
 public static IntList incrList(IntList L, int x);
+
 1.Returns an IntList identical to L, but with all values incremented by x.
+
 2.Values in L cannot change!
 
 ```java
@@ -93,7 +97,9 @@ public static IntList incrList(IntList L, int x);
 ```
 
 public static IntList dincrList(IntList L, int x);
+
 1.Returns an IntList identical to L, but with all values incremented by x.
+
 2.Not allowed to use ‘new’ (to save memory).
 
 ```java
@@ -114,3 +120,11 @@ And that, kid, is how I met your mother, I mean, SLList.
 ### SLList
 
 I got confused when I first saw this name. There are literally three capital letters in the front. That seems stupid.
+But it actually stands for Singly Linked List.
+
+Anyways, the motivation of this is clear. What we need is some abstraction, to make users free from a lot of references and recursive thinking.
+But, how do we achieve that? Let's just focus on a specific topic first, which is how do we add a node to the first of the list.
+
+For IntList, the class itself is a node, so when we say the first we actually mean the value of the first node. 
+There is no actually a reference to the first node. 
+So we can not just
