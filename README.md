@@ -4,6 +4,8 @@
 
 I want to write some notes during the procedure of my cs self-studying. Basically about Data Structures and Algorithms, Computer Architecture, Computer Networking, and Operating System. Maybe some more stuffs that I would be studying in the future.
 
+I only write these notes to make sure I understand the stuffs and its logic. I think the original materials of those courses that I listed below in the front of every section will be more helpful for you than my notes. 
+
 ## Plans and Current Status
 
 2025.4.1: Decided to start this repo and have not written anything but part of contents.
@@ -60,3 +62,6 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 ## Log
 
 2025.4.5: Write half of the [LinkedLists](./Data_Structures_and_Algorithms/LinkedLists.md), til the part before SLList.
+
+2025.4.8: Have the [LinkedLists](./Data_Structures_and_Algorithms/LinkedLists.md) done. 
+
