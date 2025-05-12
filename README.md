@@ -67,4 +67,4 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 
 2025.5.4: Have the [ArrayLists](./Data_Structures_and_Algorithms/ArrayLists.md) done. I don't know where I have been these days.
 
-2025.5.12: Have the [DisjoinSets](.\Data_Structures_and_Algorithms\DisjointSets.md) done. I really need to speed up.
+2025.5.12: Have the [DisjoinSets](./Data_Structures_and_Algorithms/DisjointSets.md) done. I really need to speed up.
