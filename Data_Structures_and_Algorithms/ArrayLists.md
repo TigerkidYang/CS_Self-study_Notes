@@ -167,25 +167,17 @@ Well, buckle up, time for some math!
 
 You see when we set the capacity to be (size + M), and we need to insert N items, the total number of memory boxes we need to create and fill is roughly
 
-$$
-\begin{aligned}
-&M + 2*M + 3*M + ... + \frac{N}{M}*M \\
-&= M * (1 + 2 + 3 + ... + \frac{N}{M}) \\
-&= M * \frac{N}{M} * (\frac{N}{M} + 1) / 2 \\
-&= \frac{N^2}{2M} + \frac{N}{2}
-\end{aligned}
-$$
+$$M + 2M + 3M + ... + \frac{N}{M}M$$
+$$= M(1 + 2 + 3 + ... + \frac{N}{M})$$
+$$= M \times \frac{N}{M} \times (\frac{N}{M} + 1) / 2$$
+$$= \frac{N^2}{2M} + \frac{N}{2}$$
 
 And when we set the capacity to be (size * M), the total number of memory boxes we need to create and fill is roughly
 
-$$
-\begin{aligned}
-&M + M^2 + M^3 + ... + M^{\log_M N} \\
-&= M * (1 + M + M^2 + ... + M^{\log_M N - 1}) \\
-&= M * \frac{M^{\log_M N} - 1}{M - 1} \\
-&= M * \frac{N - 1}{M - 1}
-\end{aligned}
-$$
+$$M + M^2 + M^3 + ... + M^{\log_M N}$$
+$$= M(1 + M + M^2 + ... + M^{\log_M N - 1})$$
+$$= M \times \frac{M^{\log_M N} - 1}{M - 1}$$
+$$= M \times \frac{N - 1}{M - 1}$$
 
 You see these two functions about N, one is quadratic, the other is linear. I assume you have been to junior high, so you see my point.
 
