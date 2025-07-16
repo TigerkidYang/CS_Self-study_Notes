@@ -211,7 +211,7 @@ You can choose what the array turn into after add to a full one. See pic below.
 
 Three ways, all works, I can assure you. This is not the tricky part.
 
-The tricky part is implementing this data structure with real world code. For example, when you want to go to the next item, sice the array is circular, how do you know it is right next to you or need to loop to the first item? And so do when you want to go to the previous item.
+The tricky part is implementing this data structure with real world code. For example, when you want to go to the next item, since the array is circular, how do you know it is right next to you or need to loop to the first item? And so do when you want to go to the previous item.
 
 As it always goes, I am here to save your world. Only a little math can make this smooth as hell. 
 
@@ -219,9 +219,9 @@ In an array of length N, the next item of the i-th item is either i + 1 or i - N
 
 So, we can use a modulo operation to fix this.
 
-To be specific, the next item of the i-th item is (i + 1) % N.
+To be specific, the next item of the i-th item is `(i + 1) % N`.
 
-And the previous item of the i-th item is (i - 1 + N) % N.
+And the previous item of the i-th item is `(i - 1 + N) % N`.
 
 So you see how we use this to do the addFirst and addLast for example.
 

@@ -62,7 +62,7 @@ I, of course, know how to do this right. However, for innocents like you, start 
 
 Naturally, we will think of just recording every single connecting line into some data structure whenever connect two objects. Then, we use some sort of algorithm to go through the whole data structure to check if two objects are connected.
 
-You don't even need to try to know this is extremely stupid and the no matter what it is algorithm is going to be super complicated. So let's keep thinking.
+You don't even need to try to know this is extremely stupid and no matter what the algorithm is, it is going to be super complicated. So let's keep thinking.
 
 The better approach is to use the buckets idea that we just mentioned, or in fancy words, the **Connected Components**. Rather than recording every single connecting line, just remembering which bucket each object belongs to is so simple and smart.
 
@@ -84,7 +84,7 @@ So here comes the first shot, ListOfSetsDS, which means we use a list of sets of
 List<Set<Integer>>
 ```
 
-Easy and clear, right? Of course, it's probably the only that person with your intelligence can come up with. That's why we call it intuitive.
+Easy and clear, right? Of course, it's probably the only one that people with your intelligence can come up with. That's why we call it intuitive.
 
 However, it can't be the right one, or clever people like me will be useless. Let's see its performance.
 

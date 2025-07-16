@@ -6,6 +6,8 @@ I want to write some notes during the procedure of my cs self-studying. Basicall
 
 I only write these notes to make sure I understand the stuffs and its logic. I think the original materials of those courses that I listed below in the front of every section will be more helpful for you than my notes.
 
+Writing these is quite boring, so I use some coarse language sometimes, just for fun and no offense at all.
+
 ## Plans and Current Status
 
 2025.4.1: Decided to start this repo and have not written anything but part of contents.
@@ -68,3 +70,5 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 2025.5.4: Have the [ArrayLists](./Data_Structures_and_Algorithms/ArrayLists.md) done. I don't know where I have been these days.
 
 2025.5.12: Have the [DisjoinSets](./Data_Structures_and_Algorithms/DisjointSets.md) done. I really need to speed up.
+
+2025.7.17: Have the [BinarySearchTrees](./Data_Structures_and_Algorithms/BinarySearchTrees.md) done. I am really slow, wasn't I?
