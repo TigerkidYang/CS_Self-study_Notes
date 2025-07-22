@@ -72,3 +72,5 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 2025.5.12: Have the [DisjoinSets](./Data_Structures_and_Algorithms/DisjointSets.md) done. I really need to speed up.
 
 2025.7.17: Have the [BinarySearchTrees](./Data_Structures_and_Algorithms/BinarySearchTrees.md) done. I am really slow, wasn't I?
+
+2025.7.23: Have the [B-Trees](./Data_Structures_and_Algorithms/B-Trees.md) done.
