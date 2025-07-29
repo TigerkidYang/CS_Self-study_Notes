@@ -78,3 +78,5 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 2025.7.25: Have the [Red Black Trees](./Data_Structures_and_Algorithms/RedBlackTrees.md) done. One day one note!
 
 2025.7.29: Have the [Hashing](./Data_Structures_and_Algorithms/Hashing.md) done.
+
+2025.7.30: Have the [Heaps and Priority Queues](./Data_Structures_and_Algorithms/HeapsandPQs.md) done.
