@@ -55,11 +55,22 @@ I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL
 
 ### Computer Networking
 
-I learn this from the book Computer Networking: A Top-Down Approach and the [official teaching videos](https://www.youtube.com/playlist?list=PL1ya5dD_M8uX-BLUF1FEvUNsYWQL5_l0O) from the author in UMASS.
+I learn this from [UCB CS168 Spring 2025](https://sp25.cs168.io/)
+
+1.[Introduction](./Computer_Networking/Introduction.md)  
+2.[Routing: Principles, Distance-Vector](./Computer_Networking/RoutingPrinciplesDistanceVector.md)  
+3.[Routing: Link-State, Routers](./Computer_Networking/RoutingLinkStateRouters.md)  
+4.[Routing: BGP](./Computer_Networking/RoutingBGP.md)  
+5.[Transport: TCP](./Computer_Networking/TransportTCP.md)  
+6.[Transport: Congestion Control](./Computer_Networking/TransportCongestionControl.md)  
+7.[Application: DNS, HTTP](./Computer_Networking/ApplicationDNSHTTP.md)  
+8.[End-to-End](./Computer_Networking/EndToEnd.md)  
+9.[Datacenters](./Computer_Networking/Datacenters.md)  
+10.[Beyond Client-Server](./Computer_Networking/BeyondClientServer.md)
 
 ### Operating System
 
-I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/schedule.html).
+I learn this from [UCB CS162](https://cs162.org/).
 
 ## Log
 
@@ -80,3 +91,5 @@ I learn this from [MIT 6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/s
 2025.7.29: Have the [Hashing](./Data_Structures_and_Algorithms/Hashing.md) done.
 
 2025.7.30: Have the [Heaps and Priority Queues](./Data_Structures_and_Algorithms/HeapsandPQs.md) done.
+
+2025.8.4: Have the [Introduction](./Computer_Networking/Introduction.md) done. Yeah I know I haven't done Data Structures and Algorithms, just want to do some network stuff.
