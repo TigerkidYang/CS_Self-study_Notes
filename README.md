@@ -93,3 +93,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.7.30: Have the [Heaps and Priority Queues](./Data_Structures_and_Algorithms/HeapsandPQs.md) done.
 
 2025.8.4: Have the [Introduction](./Computer_Networking/Introduction.md) done. Yeah I know I haven't done Data Structures and Algorithms, just want to do some network stuff.
+
+2025.8.11: Have the [Routing: Principles, Distance-Vector](./Computer_Networking/RoutingPrinciplesDistanceVector.md) done.
