@@ -33,7 +33,7 @@ I learn this from [UCB CS61B Spring 2021](https://sp21.datastructur.es/index.htm
 7.[Red Black Trees](./Data_Structures_and_Algorithms/RedBlackTrees.md)  
 8.[Hashing](./Data_Structures_and_Algorithms/Hashing.md)  
 9.[Heaps and Priority Queues](./Data_Structures_and_Algorithms/HeapsandPQs.md)  
-10.[Deep First Search and Breadth First Search](./Data_Structures_and_Algorithms/DFSandBFS.md)  
+10.[Graph: DFS and BFS](./Data_Structures_and_Algorithms/GraphDFSandBFS.md)  
 11.[Dijkstra's Algorithm](./Data_Structures_and_Algorithms/DijkstrasAlgorithm.md)  
 12.[Minimum Spanning Trees](./Data_Structures_and_Algorithms/MSTs.md)  
 13.[Tries](./Data_Structures_and_Algorithms/Tries.md)  
@@ -95,3 +95,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.4: Have the [Introduction](./Computer_Networking/Introduction.md) done. Yeah I know I haven't done Data Structures and Algorithms, just want to do some network stuff.
 
 2025.8.11: Have the [Routing: Principles, Distance-Vector](./Computer_Networking/RoutingPrinciplesDistanceVector.md) done.
+
+2025.8.13: Have the [Routing: Link-State, Routers](./Computer_Networking/RoutingLinkStateRouters.md) done.
