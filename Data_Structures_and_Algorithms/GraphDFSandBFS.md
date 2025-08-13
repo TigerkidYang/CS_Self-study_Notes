@@ -186,5 +186,333 @@ See this gif below for a s-t path demo:
 
 By the way, what we do here is actually DFS Preorder, we can also do DFS Postorder. The different is do you do the action before or after DFS calls to the neighbors.
 
+## Breadth First Traversal
 
+Here is a picture about the DFS Preorder and Postorder, and BFS of one example graph.
+
+![graph_traversals](graph_traversals.png)
+
+We have learnt DFS Preorder and Postorder. In this graph, DFS Preorder is `012543678`, and DFS Postorder is `347685210`.
+
+Besides DFS, which stands for Depth First Search, we have another algorithm called **Breadth First Search**. It act in order of distance from s. Quite like 'level order'.
+
+In the above graph, BFS is `0 1 24 53 68 7`.
+
+We use the DFS to solve the s-t path problem, but to find the shortest path, we need to use BFS.
+
+To do that, we need to use a data structure called **queue**.  It's a list with two operations: **removeFirst and addLast**. So clearly, first in first out. We call this queue our **fringe**.
+
+So the Breadth First Search algorithm is like this:
+
+We initialize the queue with the starting vertex s and mark it. 
+
+The we do this while loop: Remove the first vertex from the front of the queue. For each of its unmarked neighbors, we mark it, edgeTo[n] = v, and distTo[n] = distTo[v] + 1 if you want to track the distance. Then add it to the end of the queue. Repeat this process until the queue is empty.
+
+See this gif below for a BFS (BFP) demo:
+
+![bfp_demo](bfp_demo.gif)
+
+So we know the graphs and the algorithms. But how to implement them in programming languages?
+
+## Graph API
+
+First, of course, we need this API for graph.
+
+It's a common choice to number it with integers, no matter what 'label' of node it is. To look up a vertex by its label, you need to use a `Map<Label, Integer>`.
+
+See this pic below if not clear:
+
+![integer_vertices](integer_vertices.png)
+
+So we have the graph API roughly like this:
+
+```java
+public class Graph {
+    public Graph(int V):                  Create empty graph with v vertices
+    public void addEdge(int v, int w):    add an edge v-w
+    Iterable<Integer> adj(int v):         vertices adjacent to v
+    int V():                              number of vertices
+    int E():                              number of edges
+  ...
+}
+```
+
+We can try to implement some methods. Like calculate the 'degree', which is the number of edges adjacent to a vertex.
+
+```java
+/** degree of vertex v in graph G */
+public static int degree(Graph G, int v) {
+	int degree = 0;
+	for (int w : G.adj(v)) {
+    	    degree += 1;
+    	}
+	return degree; }
+```
+
+Or we can build a method to print out the graph.
+
+```java
+public static void print(Graph G) {
+	for (int v = 0; v < G.V(); v += 1) {
+ 	    for (int w : G.adj(v)) {
+    	       System.out.println(v + “-” + w);
+    	     }
+    }
+} 
+```
+
+Output is like:
+
+```
+$ java printDemo
+0 - 1
+0 - 3
+1 - 0
+1 - 2
+2 - 1
+3 - 0
+```
+
+And we need to do the implementation of DepthFirstPaths and BreadthFirstPaths. But before that, we need to see the underlying data structure.
+
+## Graph Representation
+
+The idea is using matrix to represent the graph, we call it **adjacency matrix**.
+
+If there is an edge from s to t, then we set the matrix[s][t] = 1, or it's 0 if there is no edge. This is for the directed graphs, if its undirected, each edge might be represented twice and the matrix is symmetric.
+
+See this pic below if not clear:
+
+![adjacency_matrix](adjacency_matrix.png)
+
+If you run G.adj(2) to the undirected graph above, it would return an iterator that can call next() through the row 2, return everytime it meets 1. So we get 1, 3.
+
+The total runtime to iterate over all neighbors of v is $\theta (V)$.
+
+We can also consider what the order of growth of the running time of the print client from before is if the graph uses an adjacency-matrix representation, where V is the number of vertices, and E is the total number of edges?
+
+The total runtime is $\theta (V^2)$, since it should iterate over a whole triangle of the matrix.
+
+Actually we have other data structures to represent the graph. Like this Edge Sets, which are the collections of all edges. A edge is a pair of ints.
+
+This is not very common so we are not gonna talk about it in detail. But the following one is important, it's the most common one in real life.
+
+The **adjacency list**. It's an array of lists indexed by vertex number. Each list stores neighbors of the vertex.
+
+See this pic below if not clear:
+
+![adjacency_lists](adjacency_lists.png)
+
+What is the order of growth of the running time of the print client if the graph uses an adjacency-list representation, where V is the number of vertices, and E is the total number of edges?
+
+For the worst case, you have to do $\theta (V^2)$ since there are V vertices and each vertex has edges to all other vertices. For the best case, you only have to do $\theta (V)$, since the graph looks like a linked list.
+
+But in general, for all cases, it's $\theta (V + E)$. Because you have to create V iterators and do print for E times.
+
+Sometimes E is $\theta (V)$, $\theta ( \sqrt V)$, so the runtime is $\theta (V + E)$ is $\theta (V + V)$ or $\theta (V + \sqrt V)$, both still $\theta (V)$. But if E is $\theta (V^2)$, then the runtime is $\theta (V + V^2)$, which is $\theta (V^2)$.
+
+See the below pic to see the comparison of some basic operations runtime for each representation:
+
+![graph_representations_runtime](graph_representations_runtime.png)
+
+You can see adjacency list is good, especially for the adj(v), which is super important for most graph algorithms.
+
+Here is an implementation of Graph with adjacency list:
+
+```java
+public class Graph {
+	private final int V;  private List<Integer>[] adj;
+	
+	public Graph(int V) {
+    	    this.V = V;
+    	    adj = (List<Integer>[]) new ArrayList[V];
+    	    for (int v = 0; v < V; v++) {
+             adj[v] = new ArrayList<Integer>();
+         }
+	} 
+
+	public void addEdge(int v, int w) {
+         adj[v].add(w);   adj[w].add(v);
+	}
+
+	public Iterable<Integer> adj(int v) {
+        return adj[v];
+	}
+}
+```
+
+## Graph Traversal Implementations
+
+To implement these algorithms, the common choice is not make them methods of Graph class, but build a client class. When we use, we pass a graph object to the graph-processing method of the client class, and then query it for information.
+
+The API would be like this:
+
+```java
+public class Paths {
+    public Paths(Graph G, int s):    Find all paths from G
+    boolean hasPathTo(int v):        is there a path from s to v?
+    Iterable<Integer> pathTo(int v): path from s to v (if any)
+}
+```
+
+See this pic below for a usage example:
+
+![path_usage](path_usage.png)
+
+Now let's start implementing the DepthFirstPaths. First let me remind you the process with the gif demo:
+
+![dfp_demo](dfp_demo.gif)
+
+First we must have an marked array of boolean, an edgeTo array of int, and a starting vertex s. So we declare these three variables in the class.
+
+```java
+public class DepthFirstPaths {
+    private boolean[] marked;
+    private int[] edgeTo;
+    private int s;
+}
+```
+
+And we need this to process the graph object:
+
+```java
+public DepthFirstPaths(Graph G, int s) {
+      ...
+      dfs(G, s);
+  }
+```
+
+The initialization of data structures is not shown, but finally it calls the dfs method to find all the paths from s.
+
+Then we must implement the dfs method, here is a recursive implementation:
+
+```java
+private void dfs(Graph G, int v) {
+    marked[v] = true;
+    for (int w : G.adj(v)) {
+      if (!marked[w]) {
+        edgeTo[w] = v;
+        dfs(G, w);
+      }        	
+    } 
+  }
+```
+
+You see it mark the starting vertex first, then do a for loop for all the neighbors. If it's unmarked, it do the edgeTo and call dfs with it. This is the recuision and we can finally find all paths.
+
+Then we do the pathTo method.
+
+```java
+public Iterable<Integer> pathTo(int v) {
+    if (!hasPathTo(v)) return null;
+    List<Integer> path = new ArrayList<>();
+    for (int x = v; x != s; x = edgeTo[x]) {
+      path.add(x);
+    }
+    path.add(s);
+    Collections.reverse(path);
+    return path;
+  }
+```
+
+First we check if there is a path to v with hasPathTo method, which we will do later. If there is a path, we create an array list to store the path. Then we do a for loop to add the path to the list. The iteration action is actually done by the edgeTo array. Finally we add s to the list, do a reverse, and ruturn it.
+
+The last method to do is the hasPathTo method.
+
+```java
+public boolean hasPathTo(int v) {
+    return marked[v];
+}
+```
+
+Super easy, just see if v is marked or not.
+
+The full java class is here:
+
+```java
+public class DepthFirstPaths {
+    private boolean[] marked;
+    private int[] edgeTo;
+    private int s;
+        
+    public DepthFirstPaths(Graph G, int s) {
+        ...
+        dfs(G, s);
+    }
+
+    private void dfs(Graph G, int v) {
+        marked[v] = true;
+        for (int w : G.adj(v)) {
+        if (!marked[w]) {
+            edgeTo[w] = v;
+            dfs(G, w);
+        }        	
+        } 
+    }
+
+    public Iterable<Integer> pathTo(int v) {
+        if (!hasPathTo(v)) return null;
+        List<Integer> path = new ArrayList<>();
+        for (int x = v; x != s; x = edgeTo[x]) {
+        path.add(x);
+        }
+        path.add(s);
+        Collections.reverse(path);
+        return path;
+    }
+
+    public boolean hasPathTo(int v) {
+        return marked[v];
+    }
+}
+```
+
+Assume the graph uses adjacency list, let's see the runtime of the DepthFirstPaths.
+
+First the constructor, the worst case is that the dfs method visits all vertices, each for once. And the edges can be considered at most each for twice. So the runtime is $O (V + E)$.
+
+You might want to say that since we only go to a vertex because there is a edge to it, so the runtime should be $O (E)$. But actually, we have to consider the time to build the marked array, to give each vertex a false for start. This takes $\theta (V)$ time. So the total runtime is $O (V + E)$.
+
+To summarize, our DepthFirstPaths implementation with graph use adjacency lists has $O (V + E)$ time complexity and $\theta (V)$ space complexity.
+
+Now let's implement the BreadthFirstPaths.
+
+I just show you the bfs method, the rest is not complicated or too different.
+
+```java
+public class BreadthFirstPaths {
+    private boolean[] marked;
+    private int[] edgeTo;
+    ...
+        
+    private void bfs(Graph G, int s) {
+        Queue<Integer> fringe = 
+                new Queue<Integer>();
+        fringe.enqueue(s);
+        marked[s] = true;
+        while (!fringe.isEmpty()) {
+            int v = fringe.dequeue();
+            for (int w : G.adj(v)) {
+                if (!marked[w]) {
+                    fringe.enqueue(w);
+                    marked[w] = true;
+                    edgeTo[w] = v;
+                }
+            }
+        }
+    }
+}
+```
+
+So you can see we create a queue, and do the while loop as we talked about.
+
+The runtime and space performance is the same as the DepthFirstPaths.
+
+See this pic below if not clear:
+
+![dfp_bfp_runtime](dfp_bfp_runtime.png)
+
+Above is based on the adjacency list representation. If you do graph with adjacency matrix, the runtime would be:
+
+![dfp_bfp_runtime_matrix](dfp_bfp_runtime_matrix.png)
 
