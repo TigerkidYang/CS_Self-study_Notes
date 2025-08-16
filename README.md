@@ -103,3 +103,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.14: Have the [Dijkstra's Algorithm](./Data_Structures_and_Algorithms/DijkstrasAlgorithm.md) done.
 
 2025.8.16: Have the [Minimum Spanning Trees](./Data_Structures_and_Algorithms/MSTs.md) done.
+
+2025.8.17: Have the [Basic Sorts](./Data_Structures_and_Algorithms/BasicSorts.md) done.
