@@ -136,6 +136,157 @@ By the way, if a stub AS is connected to a single provider, it doesn't need to r
 
 ## BGP Implementation
 
+So we already have these big ideas, we know how BGP let ASes talking to each other. But in real life, an AS is made up by a bunch of routers. We must make them act as one.
 
+So we devide routers into these two types. **Border routers** are routers that have at least one link to a router in a different AS. And **interior routers** are routers that only link to routers in the same AS.
+
+See this pic below if not clear:
+
+![border_interior](border_interior.png)
+
+The border routers are BGP speakers, they advertise BGP paths to other ASes. They must understand BGP syntax and semantics.
+
+Except for the border routers of stub ASes, they don't need to run BGP. They can just use the default route.
+
+**BGP session** is two routers exchanging BGP information between each other.
+
+**External BGP (eBGP) session** is between two routers in different ASes. Border routers use eBGP to exchange inter-domain routes.
+
+![ebgp](ebgp.png)
+
+**Internal BGP (iBGP) session** is between two routers in the same AS. Border routers use iBGP to distribute the routes they discover to other routers in the same AS.
+
+![ibgp](ibgp.png)
+
+This is different from the Interior Gateway Protocol (IGP) that we have talked about. IGP is used to find paths within an AS. Distance-Vector and Link-State are IGPs.
+
+So the process is, use IGP to find internal routes, then use eBGP to external routes to other ASes, and use iBGP to distribute the routes to other routers in the same AS.
+
+See this pic below if not clear:
+
+![bgp_process](bgp_process.png)
+
+In the above picture, the router G is called an **egress router** for the destination Z. It's the border router who can reach the destination.
+
+So to make this BGP works, we need every router to have two routing tables. One is the IGP table, which maps each internal destination to a next-hop router. The other is the BGP table, which maps each external destination to an egress router.
+
+If the destination is internal, we just go for it on IGP table. If it's external, we find the egress router on BGP table, then go for it on IGP table.
+
+See this pic below if not clear:
+
+![bgp_igp_table](bgp_igp_table.png)
+
+But is it really that simple? No, in the real world, it's normal that there are multiple paths between the same two ASes. So we still need a way to choose the best path. Since the next AS is the same anyway, the Gao-Rexford won't help.
+
+![multi_links](multi_links.png)
+
+The standard is, ASes prefer the path that uses the least of their own resources. For the pic above, AT&T prefer the yellow path, where the packets mostly travel on Verizon's AS.
+
+This is called the **hot potato routing**. Everyone just wants to get rid of the packet as fast as possible. So AS prefers the nearest egress router.
+
+See this gif below if not clear:
+
+![hot_potato_routing](hot_potato_routing.gif)
+
+But sometimes there are two egress routers that are equally close. How do we choose now?
+
+![equally_close](equally_close.png)
+
+See this above pic, the two routes are all fine for AT&T. So now maybe we can find a way so that Verizon get to choose.
+
+In the pic, Verizon would obviously prefer the pink route. So when Verizon's border routers use eBGP to announce routes to AT&T, they should add something called **Multi-Exit Discriminator(MED)** to show the distance to the destination.
+
+So if anything else is equal, AT&T would choose the route with the smaller MED, which is preferred by Verizon.
+
+See this gif below if not clear:
+
+![med](med.gif)
+
+So when you do exporting, you need to use Gao-Rexford rules to decide who can receive your routes first, then you remember to add MED to the routes.
+
+When you do importing, you first use Gao-Rexford rules to choose routes that makes more money, then you choose shorter paths, and you pic path with lower MED. If this still tied, just pick with some random tiebreaker like lower IP address or stuff.
+
+To actually implement BGP, we need to specify the BGP syntax and semantics. There are 4 BGP messages types:
+
+- **Open**: Start a BGP session.
+- **KeepAlive**: I'm still here, don't close the BGP session.
+- **Notification**: An error occurred.
+- **Update**: Announce a route.
+  - Could be a new route, an update to an old route, or withdrawing a route.
+  - We'll focus on this one.
+
+Update messages use the destination prefix and some route attributes to encode an announcement. Route attributes are things to show the routes' properties, mostly written as name-value pairs. It can be used to do import or export decisions. Some only for internal, some only for external.
+
+We are going to see three attributes:
+
+- **ASPATH**: List of all ASes in this route, in reverse order. This is global.
+
+![aspath](aspath.png)
+
+- **LOCAL PREFERENCE**: A higher is better number. This is local only. Used to encode policies preference like Gao-Rexford between AS paths.
+
+![local_preference](local_preference.png)
+
+- **MED**: A lower is better number. This is global. We know it pretty well.
+
+![med](med.png)
 
 ## IP header
+
+Then we move on to the IP header.
+
+See this pic below if not clear:
+
+![ip_header](ip_header.png)
+
+We are going to understand all fields of the IP header. And we are going to understand why design it like this.
+
+To do this, we need to see through these fields by thinking what the IP header need to do.
+
+Routers and destinations need to see the IP header to know how to **parse the packet**. So the IP header need a **Version** field to tell it's IPv4 or IPv6, a **Hdr len** field(measured in 4-byte words) to tell the header length and a **Total len**(measured in bytes) field to tell where the packet ends.
+
+Routers need to see the IP header to know how to **forward the packet**. So the IP header need **Destination IP Address** to tell where to forward the packet.
+
+And the destination need to see the IP header to see what to do next. So the IP header need a **Protocol** field to identify the Layer 4 protocol to pass the payload to.
+
+See this pic below if not clear:
+
+![whattodonext](whattodonext.png)
+
+When it's TCP next, you set it to 6. When it's UDP next, you set it to 17.
+
+Routers and destinations need to see the IP header to know how to **send response back to the source**. So the IP header need a **Source IP Address** to tell where the packet comes from.
+
+Routers and destinations need to see the IP header to handle errors. Mostly forwarding loops, which cause packets to be forwarded infinitely. So the IP header need a **TTL** field to tell how many hops at most the packet can travel, and decremente it at every hop by the router. So that if router receives packet with TTL 1, it discard it and send back a time exceeded message.
+
+Another error is that a packet can be corrupted in transit. So the IP header need a **Checksum** field to tell if the packet is corrupted, router or destination discard it if the checksum is incorrect. Notice that the checksum is just about the IP header, following the end-to-end principle, the payload should only be checked by the end host. We update the checksum every router, since the TTL is changed. Some decide to not include the TTL into the checksum computation, so that no need to recompute.
+
+Our last problem is that sometimes the packet can by too large for a link, since every link has a number of bits that it can at most carry as one unit. So that sometimes the router need to fragment the packet, and the host need to recover the original packet. To do this, we need IP header to have a **Identification** field that each fragment of the same packet has the same identification. And we need a **Flags**, DF means don't fragment just drop it if too large, MF means more fragments in following. Also we need a **Fragment Offset** field to tell which bytes of the original packet are in the fragment.
+
+See this pic below if not clear:
+
+![fragmentation](fragmentation.png)
+
+Routers and destinations need to see the IP header to see if there are any special requirement for handling the packet. So we need the IP header to have a **Type of Service** field to tell how the application or user need you to treat the packet, and a **Options** field to request some special treatment.
+
+See this pic below for a big picture of IP header fields:
+
+![ip_header_summary](ip_header_summary.png)
+
+So we know IPv4 addresses are 32 bits long, which has only about 4.2 billion possibilities, and we are running out of it.
+
+So we need IPv6 which is 128 bits long, the possibilities are basically not possible to run out. And with this oppotunity, we can make some change to the IP header, update and remove some outdated fields.
+
+Firstly, we eliminate the checksums. Today our bandwidth is not in that shortage so that we can afford some corrupted packets to be sended through the network. Much less work to do for routers so that they can process faster.
+
+And we eliminate the fragmentation. If a packet is too large, just drop it. It's the sender's responsibility to send a smaller packet. This way we also make routers live a easier life.
+
+Then we eliminate options. If you need some special treatment, you put the protocol in the **next header** field. IPv6 will send it to that protocol, and send to Layer 4 after the special treatment.
+
+Finally, we add a **Flow Label** field. It can be used to identify a flow. Original Layer 3 design send packets independently, let the higher layers deal with the flow. But sometimes routers need to check packets as flow, like when it need to block some malicious traffic.
+
+See this pic below for the IPv6 changes:
+
+![ipv6_changes](ipv6_changes.png)
+
+Basically, the philosophy is just less work for routers and let the hosts deal with them.
