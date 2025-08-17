@@ -40,7 +40,6 @@ I learn this from [UCB CS61B Spring 2021](https://sp21.datastructur.es/index.htm
 14.[Basic Sorts](./Data_Structures_and_Algorithms/BasicSorts.md)  
 15.[Quick Sort](./Data_Structures_and_Algorithms/QuickSort.md)  
 16.[Radix Sorts](./Data_Structures_and_Algorithms/RadixSorts.md)  
-17.[Sorting Summary](./Data_Structures_and_Algorithms/SortingSummary.md)  
 (and so on.)
 
 ### Computer Architecture (C)
@@ -107,3 +106,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.17: Have the [Basic Sorts](./Data_Structures_and_Algorithms/BasicSorts.md) done.
 
 2025.8.17: Have the [Routing: BGP](./Computer_Networking/RoutingBGP.md) done.
+
+2025.8.18: Have the [Quick Sort](./Data_Structures_and_Algorithms/QuickSort.md) done.
