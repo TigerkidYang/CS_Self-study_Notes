@@ -108,3 +108,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.17: Have the [Routing: BGP](./Computer_Networking/RoutingBGP.md) done.
 
 2025.8.18: Have the [Quick Sort](./Data_Structures_and_Algorithms/QuickSort.md) done.
+
+2025.8.18: Have the [Radix Sorts](./Data_Structures_and_Algorithms/RadixSorts.md) done. Data Structures and Algorithms are basically all done!
