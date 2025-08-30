@@ -114,3 +114,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.20: Have the [Transport: TCP](./Computer_Networking/TransportTCP.md) done.
 
 2025.8.25: Have the [Transport: Congestion Control](./Computer_Networking/TransportCongestionControl.md) done.
+
+2025.8.31: Have the [Application: DNS, HTTP](./Computer_Networking/ApplicationDNSHTTP.md) done.
