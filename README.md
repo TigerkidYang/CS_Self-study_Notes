@@ -46,7 +46,18 @@ I learn this from [UCB CS61B Spring 2021](https://sp21.datastructur.es/index.htm
 
 I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL0j-r-omG7i0-mnsxN5T4UcVS1Di0isqf).
 
-1.[Introduction and Data Representation](./Computer_Architecture/IntroductionAndDataRepresentation.md) (1, 2, 6) 2.[C Language](./Computer_Architecture/CLanguage.md) (3, 4, 5) 3.[RISC-V ISA: Basics & Control Flow](./Computer_Architecture/RISC-V_ISA.md) (7, 8, 9) 4.[RISC-V Advanced: Procedures & Program Execution](./Computer_Architecture/RISC-V_Advanced.md) (10, 11, 12, 13) 5.[Digital Logic](./Computer_Architecture/DigitalLogic.md) (14, 15, 16) 6.[CPU Design: Single-Cycle Datapath & Control](./Computer_Architecture/SingleCycleDatapathControl.md) (17, 18, 19, 20) 7.[CPU Design: Pipelining & Hazards](./Computer_Architecture/PipeliningHazards.md) (21, 22, 23) 8.[The Memory Hierarchy: Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27) 9.[The Memory Hierarchy: Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30) 10.[I/O Systems & Dependability](./Computer_Architecture/IOSystemsDependability.md) (31, 38) 11.[Parallelism: DLP & TLP](./Computer_Architecture/ParallelismDLPTPL.md) (32, 33, 34) 12.[Parallelism: Advanced Topics & Applications](./Computer_Architecture/ParallelismAdvancedTopicsApplications.md) (35, 36, 37)
+1.[Introduction and Data Representation](./Computer_Architecture/IntroductionAndDataRepresentation.md) (1, 2, 6)  
+2.[C Language](./Computer_Architecture/CLanguage.md) (3, 4, 5)  
+3.[RISC-V ISA: Basics & Control Flow](./Computer_Architecture/RISC-V_ISA.md) (7, 8, 9)  
+4.[RISC-V Advanced: Procedures & Program Execution](./Computer_Architecture/RISC-V_Advanced.md) (10, 11, 12, 13)  
+5.[Digital Logic](./Computer_Architecture/DigitalLogic.md) (14, 15, 16)  
+6.[CPU Design: Single-Cycle Datapath & Control](./Computer_Architecture/SingleCycleDatapathControl.md) (17, 18, 19, 20)  
+7.[CPU Design: Pipelining & Hazards](./Computer_Architecture/PipeliningHazards.md) (21, 22, 23)  
+8.[The Memory Hierarchy: Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27)  
+9.[The Memory Hierarchy: Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30)  
+10.[I/O Systems & Dependability](./Computer_Architecture/IOSystemsDependability.md) (31, 38)  
+11.[Parallelism: DLP & TLP](./Computer_Architecture/ParallelismDLPTPL.md) (32, 33, 34)  
+12.[Parallelism: Advanced Topics & Applications](./Computer_Architecture/ParallelismAdvancedTopicsApplications.md) (35, 36, 37)
 
 ### Computer Networking
 
