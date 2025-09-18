@@ -125,3 +125,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.8.31: Have the [Application: DNS, HTTP](./Computer_Networking/ApplicationDNSHTTP.md) done.
 
 2025.9.8: Have the [End-to-End](./Computer_Networking/EndToEnd.md) done. Basically done with Computer Networking.
+
+2025.9.18: Have the [Introduction and Data Representation](./Computer_Architecture/IntroductionAndDataRepresentation.md) done.
