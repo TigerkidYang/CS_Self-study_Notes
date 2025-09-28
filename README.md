@@ -48,8 +48,8 @@ I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL
 
 1.[Introduction and Data Representation](./Computer_Architecture/IntroductionAndDataRepresentation.md) (1, 2, 6)  
 2.[C Language](./Computer_Architecture/CLanguage.md) (3, 4, 5)  
-3.[RISC-V ISA: Basics & Control Flow](./Computer_Architecture/RISC-V_ISA.md) (7, 8, 9)  
-4.[RISC-V Advanced: Procedures & Program Execution](./Computer_Architecture/RISC-V_Advanced.md) (10, 11, 12, 13)  
+3.[RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) (7, 8, 9, 10)  
+4.[RISC-V II: Procedures & Program Execution](./Computer_Architecture/RISC-V_II.md) (11, 12, 13)  
 5.[Digital Logic](./Computer_Architecture/DigitalLogic.md) (14, 15, 16)  
 6.[CPU Design: Single-Cycle Datapath & Control](./Computer_Architecture/SingleCycleDatapathControl.md) (17, 18, 19, 20)  
 7.[CPU Design: Pipelining & Hazards](./Computer_Architecture/PipeliningHazards.md) (21, 22, 23)  
@@ -129,3 +129,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.9.18: Have the [Introduction and Data Representation](./Computer_Architecture/IntroductionAndDataRepresentation.md) done.
 
 2025.9.23: Have the [C Language](./Computer_Architecture/CLanguage.md) done.
+
+2025.9.29: Have the [RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) done.
