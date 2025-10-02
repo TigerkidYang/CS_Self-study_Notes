@@ -1,5 +1,14 @@
 # RISC-V I: Basics & Control Flow
 
+I learn this from these lectures:
+
+[Lec7](https://www.learncs.site/resource/cs61c/lectures/lec07.pdf)
+[Lec8](https://www.learncs.site/resource/cs61c/lectures/lec08.pdf)
+[Lec9](https://www.learncs.site/resource/cs61c/lectures/lec09.pdf)
+[Lec10](https://www.learncs.site/resource/cs61c/lectures/lec10.pdf)
+
+All the pictures are from the slides.
+
 ## Intro
 
 ![assembly_language_in_abstraction](assembly_language_in_abstraction.png)

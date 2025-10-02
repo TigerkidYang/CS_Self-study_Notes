@@ -1,5 +1,11 @@
 # C Language
 
+I learn this from these lectures:
+
+[Lec3-5](https://www.learncs.site/resource/cs61c/lectures/lec03~05.pdf)
+
+All the pictures are from the slides.
+
 You remember the abstraction we used to talk about?
 
 ![abstraction](abstraction.png)

@@ -76,7 +76,20 @@ I learn this from [UCB CS168 Spring 2025](https://sp25.cs168.io/)
 
 ### Operating System
 
-I learn this from [UCB CS162](https://cs162.org/).
+I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum-resource/cs162/syllabus).
+
+1.[Intro](./Operating_System/Intro.md) (1, 2)  
+2.[Abstractions](./Operating_System/Abstractions.md) (3, 4, 5)  
+3.[Synchronization](./Operating_System/Synchronization.md) (6, 7, 8, 9)  
+4.[Scheduling](./Operating_System/Scheduling.md) (10, 11, 12)  
+5.[Memory](./Operating_System/Memory.md) (13, 14, 15, 16)  
+6.[I/O](./Operating_System/IO.md) (17, 18)  
+7.[Filesystems](./Operating_System/Filesystems.md) (19, 20, 21)
+
+### Algorithm Coding Problems Notes (in C)
+
+1.[ArrayLists](./Algorithm_Coding_Problems/ArrayLists.md)  
+2.[LinkedLists](./Algorithm_Coding_Problems/LinkedLists.md)
 
 ## Log
 
@@ -131,3 +144,5 @@ I learn this from [UCB CS162](https://cs162.org/).
 2025.9.23: Have the [C Language](./Computer_Architecture/CLanguage.md) done.
 
 2025.9.29: Have the [RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) done.
+
+2025.10.3: Have the [RISC-V II: Instruction Formats and Running a Program](./Computer_Architecture/RISC-V_II.md) done.
