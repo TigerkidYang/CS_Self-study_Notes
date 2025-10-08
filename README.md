@@ -50,14 +50,12 @@ I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL
 2.[C Language](./Computer_Architecture/CLanguage.md) (3, 4, 5)  
 3.[RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) (7, 8, 9, 10)  
 4.[RISC-V II: Procedures & Program Execution](./Computer_Architecture/RISC-V_II.md) (11, 12, 13)  
-5.[Digital Logic](./Computer_Architecture/DigitalLogic.md) (14, 15, 16)  
-6.[CPU Design: Single-Cycle Datapath & Control](./Computer_Architecture/SingleCycleDatapathControl.md) (17, 18, 19, 20)  
-7.[CPU Design: Pipelining & Hazards](./Computer_Architecture/PipeliningHazards.md) (21, 22, 23)  
-8.[The Memory Hierarchy: Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27)  
-9.[The Memory Hierarchy: Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30)  
-10.[I/O Systems & Dependability](./Computer_Architecture/IOSystemsDependability.md) (31, 38)  
-11.[Parallelism: DLP & TLP](./Computer_Architecture/ParallelismDLPTPL.md) (32, 33, 34)  
-12.[Parallelism: Advanced Topics & Applications](./Computer_Architecture/ParallelismAdvancedTopicsApplications.md) (35, 36, 37)
+5.[Synchronous Digital Systems](./Computer_Architecture/SynchronousDigitalSystems.md) (14, 15, 16, 17)  
+6.[Single-cycle CPU Control](./Computer_Architecture/SingleCycleCPUControl.md) (18, 19, 20)  
+7.[Pipelining](./Computer_Architecture/Pipelining.md) (21, 22, 23)  
+8.[Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27)  
+9.[Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30, 31)  
+10.[I/O Systems](./Computer_Architecture/IOSystems.md) (31)
 
 ### Computer Networking
 
@@ -146,3 +144,5 @@ I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum
 2025.9.29: Have the [RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) done.
 
 2025.10.3: Have the [RISC-V II: Instruction Formats and Running a Program](./Computer_Architecture/RISC-V_II.md) done.
+
+2025.10.8: Have the [Synchronous Digital Systems](./Computer_Architecture/SynchronousDigitalSystems.md) done.
