@@ -51,7 +51,7 @@ I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL
 3.[RISC-V I: Basics & Control Flow](./Computer_Architecture/RISC-V_I.md) (7, 8, 9, 10)  
 4.[RISC-V II: Procedures & Program Execution](./Computer_Architecture/RISC-V_II.md) (11, 12, 13)  
 5.[Synchronous Digital Systems](./Computer_Architecture/SynchronousDigitalSystems.md) (14, 15, 16, 17)  
-6.[Single-cycle CPU Control](./Computer_Architecture/SingleCycleCPUControl.md) (18, 19, 20)  
+6.[Single-cycle CPU](./Computer_Architecture/SingleCycleCPU.md) (18, 19, 20)  
 7.[Pipelining](./Computer_Architecture/Pipelining.md) (21, 22, 23)  
 8.[Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27)  
 9.[Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30, 31)  
@@ -146,3 +146,5 @@ I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum
 2025.10.3: Have the [RISC-V II: Instruction Formats and Running a Program](./Computer_Architecture/RISC-V_II.md) done.
 
 2025.10.8: Have the [Synchronous Digital Systems](./Computer_Architecture/SynchronousDigitalSystems.md) done.
+
+2025.10.15: Have the [Single-cycle CPU](./Computer_Architecture/SingleCycleCPU.md) done.

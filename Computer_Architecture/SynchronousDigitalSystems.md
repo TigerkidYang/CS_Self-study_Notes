@@ -375,3 +375,53 @@ But finally, we must got an n-bit adder. To do that, we just link them in series
 ![n_bit_adder](n_bit_adder.png)
 
 For subtracter, we can just use the adder, $A - B = A + (-B)$.
+
+## Turing Complete Gaming Note
+
+So I am gonna nail some Turing Complete logic gate building tasks with what we have learnt.
+
+### XOR Gate
+
+$$
+y = \bar{a}b + a\bar{b}
+$$
+
+![tc_xor](tc_xor.png)
+
+### OR Gate with 3 inputs
+
+![tc_or_3_inputs_tt](tc_or_3_inputs_tt.png)
+
+$$
+\begin{align*}
+y &= a\bar{b}\bar{c} + \bar{a}b\bar{c} + ab\bar{c} + \bar{a}\bar{b}c + a\bar{b}c + \bar{a}bc + abc \\
+  &= a(\bar{b}\bar{c} + b\bar{c} + \bar{b}c + bx) + \bar{a}(b\bar{c} + \bar{b}c + bc) \\
+  &= a(b + \bar{b})(c + \bar{c}) + \bar{a}(b\bar{c} + \bar{b}c + bc) \\
+  &= a + \bar{a}(b\bar{c} + \bar{b}c + bc) \\
+  &= a + \bar{a}(b + \bar{b}c) \\
+  &= a + \bar{a}(b + c) \\
+  &= a + b + c
+\end{align*}
+$$
+
+![tc_or_3_inputs](tc_or_3_inputs.png)
+
+### AND Gate with 3 inputs
+
+![tc_and_3_inputs_tt](tc_and_3_inputs_tt.png)
+
+$$
+y = abc
+$$
+
+![tc_and_3_inputs](tc_and_3_inputs.png)
+
+### XNOR Gate, the inverse of XOR
+
+![tc_xnor_tt](tc_xnor_tt.png)
+
+$$
+y = \bar{a}\bar{b} + ab
+$$
+
+![tc_xnor](tc_xnor.png)
