@@ -54,7 +54,7 @@ I learn this from [UCB CS61C Fall 2020](https://www.youtube.com/playlist?list=PL
 6.[Single-cycle CPU](./Computer_Architecture/SingleCycleCPU.md) (18, 19, 20)  
 7.[Pipelining](./Computer_Architecture/Pipelining.md) (21, 22, 23)  
 8.[Caches](./Computer_Architecture/Caches.md) (24, 25, 26, 27)  
-9.[Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30, 31)  
+9.[Virtual Memory](./Computer_Architecture/VirtualMemory.md) (28, 29, 30)  
 10.[I/O Systems](./Computer_Architecture/IOSystems.md) (31)
 
 ### Computer Networking
@@ -148,3 +148,5 @@ I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum
 2025.10.8: Have the [Synchronous Digital Systems](./Computer_Architecture/SynchronousDigitalSystems.md) done.
 
 2025.10.15: Have the [Single-cycle CPU](./Computer_Architecture/SingleCycleCPU.md) done.
+
+2025.10.18: Have the [Pipelining](./Computer_Architecture/Pipelining.md) done.
