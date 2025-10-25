@@ -326,10 +326,6 @@ ElemType middleNumber (AList *A, AList *B) {
 
 ---
 
-当然可以，以下是你要求的 **数学公式使用 `$...$` 和 `$$...$$`** 的 Markdown 版本 👇：
-
----
-
 ### 【2013 统考真题】
 
 已知一个整数序列 $A = (a_0, a_1, \dots, a_{n-1})$，其中 $0 \le a_i < n$（$0 \le i < n$）。
@@ -343,6 +339,31 @@ ElemType middleNumber (AList *A, AList *B) {
 假设 $A$ 中的 $n$ 个元素保存在一个一维数组中，设计一个尽可能高效的算法，找出 $A$ 的主元素。
 若存在主元素，则输出该元素；否则输出 $-1$。
 
+```c
+typedef struct {
+    int data[MAXSIZE];
+    int length;
+} AList;
+
+int mainElem (AList *A) {
+    if (!A || A->length == 0) return -1;
+    int n = A->length;
+    int *count = (int*)calloc(n, sizeof(int));
+    for (int i = 0; i < n; i++) {
+        int k = A->data[i];
+        count[k]++;
+    }
+    for (int j = 0; j < n; j++) {
+        if (count[j] > n/2) {
+            free(count);
+            return j;
+        }
+    }
+    free(count);
+    return -1;
+}
+```
+
 ---
 
 ### 【2018 统考真题】
@@ -353,6 +374,48 @@ ElemType middleNumber (AList *A, AList *B) {
 
 - 数组 ${-5, 3, 2, 3}$ 中未出现的最小正整数是 $1$；
 - 数组 ${1, 2, 3}$ 中未出现的最小正整数是 $4$。
+
+```c
+typedef struct {
+    int data[MAXSIZE];
+    int length;
+} AList;
+
+int minNoPosInt (AList *L) {
+    if (!L || L->length==0) return 1;
+    int n = L->length;
+    for (int i = 1; i <= n + 1; i++) {
+        int found = 0;
+        for (int j = 0; j < n; j++) {
+            if (L->data[j] == i) {
+                found = 1;
+                break;
+                }
+        }
+        if (!found) return i;
+    }
+}
+```
+
+上面暴力解法$N^2$时间。题目不要求空间也可以直接另开一个数组，哈希方法，做到线性。但这里追求一个既线性时间又空间性质很好的 in place 算法。
+
+```c
+int minNoPosInt(AList *L) {
+    if (!L||!L->length) return 1;
+    int *a=L->data, n=L->length;
+    for (int i = 0; i < n; i++) {
+        while (a[i]>0&&a[i]<n+1&&a[i]!=a[a[i]-1]) {
+            int temp = a[a[i]-1];
+            a[a[i]-1] = a[i];
+            a[i] = temp;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        if (a[i]!=i+1) return i+1;
+    }
+    return n+1;
+}
+```
 
 ---
 
@@ -374,5 +437,66 @@ S_1 = {-1, 0, 9}, \quad S_2 = {-25, -10, 10, 11}, \quad S_3 = {2, 9, 17, 30, 41}
 $$
 
 则最小距离的三元组为 $(9, 10, 9)$，最小距离为 $2$。
+
+```c
+typedef struct {
+    int data[MAXSIZE];
+    int length;
+} AList;
+
+int distance(int i, int j, int k) {
+    return abs(i-j) + abs(i-k) + abs(j-k);
+}
+
+int minDistance(AList *S1, AList *S2, AList *S3) {
+    int *a = S1->data, *b = S2->data, *c = S3->data;
+    int n1 = S1->length, n2 = S2->length, n3 = S3->length;
+    if (!S1||!S2||!S3||!n1||!n2||!n3) return -1;
+    int currentMin = distance(a[0], b[0], c[0]);
+    for (int i = 0; i < n1; i++) {
+        for (int j = 0; j < n2; j++) {
+            for (int k = 0; k < n3; k++) {
+                if (distance(a[i], b[j], c[k]) < currentMin) {
+                    currentMin = distance(a[i], b[j], c[k]);
+                }
+            }
+        }
+    }
+    return currentMin;
+}
+```
+
+以上是很土的暴力解法。而且我他妈没有注意到这些数组是升序的，甘霖娘。
+
+Fun fact:
+
+Since this a, b, c are quite random, let's just say $a < b < c$. Then you will find distance is actually $2(c-a)$.
+
+And the 数组都是升序，干脆三指针，每次前进最小的指针，这样才会改变值。
+
+```c
+int distance(int i, int j, int k) {
+    int max = (i > j) ? (i > k ? i : k) : (j > k ? j : k);
+    int min = (i < j) ? (i < k ? i : k) : (j < k ? j : k);
+    return 2*(max-min);
+}
+
+int minDistance(AList *A, AList *B, AList *C) {
+    if (!A||!B||!C) return -1;
+    int *a=A->data, *b=B->data, *c=C->data;
+    int currentMin = distance(a[0], b[0], c[0]);
+    int i = 0, j = 0, k = 0;
+    while (i < A->length && j < B->length && k < C->length) {
+        int d = distance(a[i], b[j], c[k]);
+        if (d < currentMin) {
+            currentMin = d;
+        }
+        if (a[i] < b[j] && a[i] < c[k]) i++;
+        else if (c[k] < a[i] && c[k] < b[j]) k++;
+        else j++;
+    }
+    return currentMin;
+}
+```
 
 ---

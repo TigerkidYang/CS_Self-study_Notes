@@ -74,15 +74,16 @@ I learn this from [UCB CS168 Spring 2025](https://sp25.cs168.io/)
 
 ### Operating System
 
-I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum-resource/cs162/syllabus).
+I learn this from [UCB CS162 Fall 2025](https://cs162.org).
 
-1.[Intro](./Operating_System/Intro.md) (1, 2)  
-2.[Abstractions](./Operating_System/Abstractions.md) (3, 4, 5)  
-3.[Synchronization](./Operating_System/Synchronization.md) (6, 7, 8, 9)  
-4.[Scheduling](./Operating_System/Scheduling.md) (10, 11, 12)  
-5.[Memory](./Operating_System/Memory.md) (13, 14, 15, 16)  
-6.[I/O](./Operating_System/IO.md) (17, 18)  
-7.[Filesystems](./Operating_System/Filesystems.md) (19, 20, 21)
+1.[Intro](./Operating_System/Intro.md) (1)  
+2.[Protection](./Operating_System/Protection.md) (2, 3)  
+3.[Systems Programming](./Operating_System/SystemsProgramming.md) (4, 5)  
+4.[Synchronization](./Operating_System/Synchronization.md) (6, 7, 8, 9)  
+5.[Scheduling](./Operating_System/Scheduling.md) (10, 11, 12, 13)  
+6.[Virtual Memory](./Operating_System/VirtualMemory.md) (14, 15, 16)  
+7.[General I/O](./Operating_System/GeneralIO.md) (17)  
+8.[Filesystems](./Operating_System/Filesystems.md) (18, 19, 20)
 
 ### Algorithm Coding Problems Notes (in C)
 
@@ -152,3 +153,5 @@ I learn this from [UCB CS162 Fall 2020](https://www.learncs.site/docs/curriculum
 2025.10.18: Have the [Pipelining](./Computer_Architecture/Pipelining.md) done.
 
 2025.10.20: Have the [Caches](./Computer_Architecture/Caches.md) done.
+
+2025.10.25: Have the [Virtual Memory](./Computer_Architecture/VirtualMemory.md) done.
