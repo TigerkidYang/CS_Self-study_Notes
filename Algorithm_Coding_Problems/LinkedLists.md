@@ -15,7 +15,6 @@ typedef struct node {
 
 typedef struct SList {
     node *head;
-    int length;
 } SList;
 
 void delValue (SList *L, int x) {
@@ -26,7 +25,6 @@ void delValue (SList *L, int x) {
             node *temp = p->next;
             p->next = temp->next;
             free(temp);
-            L->length--;
         } else {
             p = p->next;
         }
@@ -49,7 +47,6 @@ typedef struct node {
 
 typedef struct SList {
     node *head;
-    int length;
 } SList;
 
 void inPlaceReverse (SList *L) {
@@ -88,7 +85,6 @@ typedef struct node {
 
 typedef struct SList {
     node *head;
-    int length;
 } SList;
 
 void divedeTwo(SList *L, SList *A, SList *B) {
@@ -117,6 +113,52 @@ void divedeTwo(SList *L, SList *A, SList *B) {
 例如 (7, 10, 10, 21, 30, 42, 42, 51, 70)
 将变为 (7, 10, 21, 30, 42, 51, 70)。
 
+```c
+typedef struct node {
+    int data;
+    node *next;
+} node;
+
+typedef struct SList {
+    node *head;
+} SList;
+
+void delRepeat(SList *L) {
+    if (!L||!L->head||!L->head->next) return;
+    node *i = L->head->next;
+    node *j = i->next;
+    while (j) {
+        if (i->data == j->data) {
+            i->next = j->next;
+            node *tmp = j;
+            j = j->next;
+            free(tmp);
+        } else {
+            i = j;
+            j = i->next;
+        }
+    }
+}
+```
+
+有点愚蠢了，好像一个指针也可以
+
+```c
+void delRepeat(SList *L) {
+    if (!L||!L->head||!L->head->next) return;
+    node *i = L->head->next;
+    while (i->next) {
+        if (i->data == i->next->data) {
+            node *temp = i->next;
+            i->next = temp->next;
+            free(temp);
+        } else {
+            i = i->next;
+        }
+    }
+}
+```
+
 ---
 
 ### **15.**
@@ -131,6 +173,32 @@ void divedeTwo(SList *L, SList *A, SList *B) {
 2. 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释；
 3. 说明所设计算法的时间复杂度和空间复杂度。
 
+
+```c
+typedef struct node {
+    int data;
+    node *next;
+} node;
+
+typedef struct SList {
+    node *head;
+} SList;
+
+boolean hasCycle(SList *L) {
+    if (!L||!L->head||!L->head->next) return false;
+    node *s = L->head->next;
+    node *f = s->next;
+    while (f && f->next) {
+        if (f == s) {
+            return true;
+        } else {
+            s = s->next;
+            f = f->next->next;
+        }
+    }
+    return false;
+}
+```
 ---
 
 ## 历年真题
@@ -157,6 +225,56 @@ data | link
 2. 描述算法的详细实现步骤；
 3. 根据设计思想和实现步骤，采用程序设计语言描述算法（使用 C、C++ 或 Java 语言），关键之处给出简要注释。
 
+```c
+typedef struct node {
+    int data;
+    node *next;
+} node;
+
+typedef struct SList {
+    node *head;
+} SList;
+
+int lastK(SList *L, int k) {
+    if (!L||!L->head||!L->head->next||k<=0) return 0;
+    node *cur = L->head->next;
+    node *f = cur;
+    for (int i = 1; i < k; i++) {
+        if (!f) return 0;
+        f = f->next;
+    }
+    while (f) {
+        if (!f->next) {
+            printf("%d", cur->data);
+            return 1;
+        }
+        cur = cur->next;
+        f = f->next;
+    }
+    return 0;
+}
+```
+
+以上是快指针先走k-1步，其实如果先走k步的话反而while loop简单些，反正走到f is NULL停下来，就正好到位。
+
+```c
+int lastK (SList *L, int k) {
+    if (!L||!L->head||!L->head->next||k<=0) return 0;
+    node *cur = L->head->next;
+    node *f = cur;
+    for (int i = 0; i < k; i++) {
+        if (!f) return 0;
+        f = f->next;
+    }
+    while (f) {
+        cur = cur->next;
+        f = f->next;
+    }
+    printf("%d", cur->data);
+    return 1;
+}
+```
+
 ---
 
 ### **18.（2012 年统考真题）**
@@ -172,13 +290,55 @@ data | link
 data | next
 ```
 
-请设计一个**尽可能高效的算法**，找出 str1 和 str2 所指单词链表的**共同后缀的起始位置 p**。
+请设计一个时间上尽可能高效的算法，找出 str1 和 str2 所指单词链表的**共同后缀的起始位置 p**。
 
 要求：
 
 1. 给出算法的基本设计思想；
 2. 根据设计思想，采用 C 或 C++ 或 Java 语言描述算法，关键之处给出注释；
 3. 说明你所设计算法的时间复杂度。
+
+```c
+typedef struct node {
+    int data;
+    node *next;
+} node;
+
+typedef struct SList {
+    node *head;
+} SList;
+
+node* suffixStart(SList *str1, SList *str2) {
+    if (!str1||!str1->head||!str1->head->next) return NULL;
+    if (!str2||!str2->head||!str2->head->next) return NULL;
+    int len1 = 0, len2 = 0;
+    node *p1 = str1->head->next, *p2 = str2->head->next;
+    while (p1) {
+        len1++;
+        p1 = p1->next;
+    }
+    while (p2) {
+        len2++;
+        p2 = p2->next;
+    }
+    p1 = str1->head->next;
+    p2 = str2->head->next;
+    if (len1 > len2) {
+        for (int i = 0; i < len1 - len2; i++) {
+            p1 = p1->next;
+        }
+    } else {
+        for (int i = 0; i < len2 - len1; i++) {
+            p2 = p2->next;
+        }
+    }
+    while (p1 != p2) {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return p1;
+}
+```
 
 ---
 

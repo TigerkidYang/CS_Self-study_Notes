@@ -1,5 +1,11 @@
 # I/O
 
+I learn this from this lecture:
+
+[Lec31](https://www.learncs.site/resource/cs61c/lectures/lec31.pdf)
+
+All the pictures are from the slides.
+
 ## Intro
 
 So remember we mentioned that the OS also manage the **I/O (Input/Output)** to let the programs running on CPU interact with devices? Let's talk about this now.

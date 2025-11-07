@@ -155,3 +155,5 @@ I learn this from [UCB CS162 Fall 2025](https://cs162.org).
 2025.10.20: Have the [Caches](./Computer_Architecture/Caches.md) done.
 
 2025.10.25: Have the [Virtual Memory](./Computer_Architecture/VirtualMemory.md) done.
+
+2025.11.7: Have the [Introduction](./Operating_System/Intro.md) done.
